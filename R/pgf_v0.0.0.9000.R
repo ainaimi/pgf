@@ -38,6 +38,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
     # by design, efuwp only possible after ~4 months
     Sp[1]<-0
     # fetal loss possible in month 1, therefore predict
+    dDp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=0,B=Bp[j],Bl=0,N=Np[j],Nl=0,j)
     Dp[1]<-ifelse(Zp[1]==1,
                   pFunc(fitD,dDp),
                   0)
