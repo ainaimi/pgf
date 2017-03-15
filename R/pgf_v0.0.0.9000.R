@@ -27,7 +27,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
   # time-varying covariates
   Xp[1]<-d$X;Bp[1]<-d$B;Np[1]<-d$N;Zp[1]<-d$Z;
   # outcomes
-  if(censoring==NULL){
+  if(is.null(censoring)){
     Cp[1]<-0
   } else if(censoring=="Natural"){
     Cp[1]<-d$C
@@ -64,7 +64,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
                     1)
       # outcome 1
       dCp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Bp[j-1],N=Np[j],Nl=Np[j-1],Z=Zp[j],j)
-      if(censoring==NULL){
+      if(is.null(censoring)){
         Cp[j]<-0
       } else if(censoring=="Natural"){
         Cp[j]<-pFunc(fitC,dCp)
