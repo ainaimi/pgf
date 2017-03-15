@@ -7,7 +7,7 @@
 #' @param randomization A numeric randomization. "NULL" indicates natural course.
 #' @param exposure A numeric exposure. "NULL" indicates natural course.
 #' @param length A numeric length of follow-up to be simulated.
-#' @param censoring A numeric censoring . "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.
+#' @param censoring A numeric censoring. "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.
 #' @keywords g-formula
 #' @export
 #' @examples
@@ -32,9 +32,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
   } else if(censoring=="natural"){
     Cp[1]<-d$C
   }
-  if(Cp[1]==1){
-    break
-  } else{
+  if(Cp[1]==0){
     # by design, efuwp only possible after ~4 months
     Sp[1]<-0
     # fetal loss possible in month 1, therefore predict
@@ -44,6 +42,8 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
                   0)
     # by design, live birth only possible after ~6 months
     Yp[1]<-0
+  } else {
+    Sp[1]<-Dp[1]<-Yp[1]<-0
   }
   # second month onwards
   for(j in 2:lngth){
