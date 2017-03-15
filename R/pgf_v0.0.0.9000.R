@@ -71,5 +71,5 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
     # time-point
     mm[j]<-j
   }
-  gdat<-as.data.frame(cbind(id,mm,Vp,Rp,Bp,Np,Xp,Zp,Sp,Cp,Dp,Yp))
+  gdat<-as.data.frame(cbind(id,mm,Vp,Rp,Bp,Np,Xp,Zp,Sp,Cp,Dp,Yp,row.names=NULL))
 }
