@@ -14,11 +14,11 @@ pgf(ii, mc_data, length, randomization = NULL, exposure = NULL,
 
 \item{length}{A numeric length of follow-up to be simulated.}
 
-\item{randomization}{A numeric randomization. Null indicates natural course.}
+\item{randomization}{A numeric randomization. "NULL" indicates natural course.}
 
-\item{exposure}{A numeric exposure. Null indicates natural course.}
+\item{exposure}{A numeric exposure. "NULL" indicates natural course.}
 
-\item{censoring}{A numeric censoring . Null indicates no censoring.}
+\item{censoring}{A numeric censoring . "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.}
 }
 \description{
 This function allows you simulate the follow-up of a complex

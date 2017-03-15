@@ -4,10 +4,10 @@
 #' longitudinal dataset under different intervention regimes.
 #' @param ii A numeric sequence (e.g., 1:5000) indicating monte carlo resample size.
 #' @param mc_data The original re-sampled baseline data.
-#' @param randomization A numeric randomization. Null indicates natural course.
-#' @param exposure A numeric exposure. Null indicates natural course.
+#' @param randomization A numeric randomization. "NULL" indicates natural course.
+#' @param exposure A numeric exposure. "NULL" indicates natural course.
 #' @param length A numeric length of follow-up to be simulated.
-#' @param censoring A numeric censoring . Null indicates no censoring.
+#' @param censoring A numeric censoring . "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.
 #' @keywords g-formula
 #' @export
 #' @examples
@@ -29,7 +29,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
   # outcomes
   if(is.null(censoring)){
     Cp[1]<-0
-  } else if(censoring=="Natural"){
+  } else if(censoring=="natural"){
     Cp[1]<-d$C
   }
   if(Cp[1]==1){
@@ -67,7 +67,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
       dCp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Bp[j-1],N=Np[j],Nl=Np[j-1],Z=Zp[j],j)
       if(is.null(censoring)){
         Cp[j]<-0
-      } else if(censoring=="Natural"){
+      } else if(censoring=="natural"){
         Cp[j]<-pFunc(fitC,dCp)
       }
       # outcome 2
