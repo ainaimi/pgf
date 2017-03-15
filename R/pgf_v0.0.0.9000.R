@@ -45,7 +45,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
                     1)
       # outcome 1
       dCp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Bp[j-1],N=Np[j],Nl=Xp[j-1],Z=Zp[j],j)
-      Cp[j]<-pFunc(fitC,dCp)
+      Cp[j]<-0 #pFunc(fitC,dCp) set to no censoring by default
       # outcome 2
       dSp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Xp[j-1],N=Np[j],Nl=Xp[j-1],j)
       if(j<=9){
