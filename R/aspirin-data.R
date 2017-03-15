@@ -21,6 +21,6 @@
 #' data(aspirin)
 #' require(cmprsk)
 #' a<-subset(aspirin,aspirin$y>0)
-#' cuminc<-cuminc(a$month,a$y,cencode=3)
+#' cuminc<-cuminc(a$month,a$y,cencode=4)
 #' \donttest{plot(cuminc)}
 "aspirin"
