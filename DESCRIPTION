@@ -3,7 +3,7 @@ Title: Package for Fitting the Parametric G Formula
 Version: 0.0.0.9000
 Authors@R: person("Ashley", "Naimi", email = "ashley.naimi@pitt.edu", role = c("aut", "cre"))
 Description: This package is an implementation of the parametric g formula for complex longitudinal data.
-Depends: R (>= 3.3.3)
+Depends: R (>= 3.1.2)
 License: Apache 2: See LICENSE file
 Encoding: UTF-8
 LazyData: true
