@@ -2,13 +2,18 @@
 #'
 #' This function allows you simulate the follow-up of a complex
 #' longitudinal dataset under different intervention regimes.
-#' @param ii A numeric sequence (e.g., 1:5000) indicating monte carlo resample size.
+#' @param ii A numeric sequence (e.g., 1:5000) indicating monte
+#' carlo resample size.
 #' @param mc_data The original re-sampled baseline data.
-#' @param randomization A numeric randomization. "NULL" indicates natural course.
+#' @param randomization A numeric randomization. "NULL" indicates
+#' natural course, "1" indicates set randomization to treatment,
+#' "0" indicates set randomization to placebo. Defaults to "NULL".
 #' @param exposure A numeric exposure. "NULL" indicates natural course.
 #' @param length A numeric length of follow-up to be simulated.
-#' @param censoring A numeric censoring. "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.
-#' @keywords g-formula
+#' @param censoring A numeric censoring. "NULL" indicates no
+#' censoring, and "natural" indicates censoring as in empirical
+#' data. Defaults to "NULL".
+#' @keywords g-formula, causal inference
 #' @export
 #' @examples
 #' pgf()
@@ -23,7 +28,12 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
   # time & id
   mm[1]<-j<-1;id<-d$id;
   # baseline & randomization indicator
-  Vp<-d[,names(d) %in% c("id","V1","V2","V3","V4","V5","V6","V7","V8")];Rp<-d$R
+  Vp<-d[,names(d) %in% c("id","V1","V2","V3","V4","V5","V6","V7","V8")]
+  if(is.null(randomization)){
+    Rp<-d$R
+  } else{
+    Rp<-randomization
+  }
   # time-varying covariates
   Xp[1]<-d$X;Bp[1]<-d$B;Np[1]<-d$N;Zp[1]<-d$Z;
   # outcomes

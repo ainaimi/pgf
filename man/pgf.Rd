@@ -8,17 +8,22 @@ pgf(ii, mc_data, length, randomization = NULL, exposure = NULL,
   censoring = NULL)
 }
 \arguments{
-\item{ii}{A numeric sequence (e.g., 1:5000) indicating monte carlo resample size.}
+\item{ii}{A numeric sequence (e.g., 1:5000) indicating monte
+carlo resample size.}
 
 \item{mc_data}{The original re-sampled baseline data.}
 
 \item{length}{A numeric length of follow-up to be simulated.}
 
-\item{randomization}{A numeric randomization. "NULL" indicates natural course.}
+\item{randomization}{A numeric randomization. "NULL" indicates
+natural course, "1" indicates set randomization to treatment,
+"0" indicates set randomization to placebo. Defaults to "NULL".}
 
 \item{exposure}{A numeric exposure. "NULL" indicates natural course.}
 
-\item{censoring}{A numeric censoring. "NULL" indicates no censoring, and "natural" indicates censoring as in empirical data. Default value is NULL.}
+\item{censoring}{A numeric censoring. "NULL" indicates no
+censoring, and "natural" indicates censoring as in empirical
+data. Defaults to "NULL".}
 }
 \description{
 This function allows you simulate the follow-up of a complex
@@ -27,4 +32,6 @@ longitudinal dataset under different intervention regimes.
 \examples{
 pgf()
 }
-\keyword{g-formula}
+\keyword{causal}
+\keyword{g-formula,}
+\keyword{inference}
