@@ -8,7 +8,8 @@
 #' @param randomization A numeric randomization. "NULL" indicates
 #' natural course, "1" indicates set randomization to treatment,
 #' "0" indicates set randomization to placebo. Defaults to "NULL".
-#' @param exposure A numeric exposure. "NULL" indicates natural course.
+#' @param exposure A numeric exposure. "NULL" indicates natural course,
+#' "1" indicates set to exposed, "0" indicates set to unexposed.
 #' @param length A numeric length of follow-up to be simulated.
 #' @param censoring A numeric censoring. "NULL" indicates no
 #' censoring, and "natural" indicates censoring as in empirical
@@ -34,8 +35,14 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
   } else{
     Rp<-randomization
   }
+  # time-varying exposure
+  if(is.null(exposure)){
+    Xp[1]<-d$X
+  } else{
+    Xp[1]<-exposure
+  }
   # time-varying covariates
-  Xp[1]<-d$X;Bp[1]<-d$B;Np[1]<-d$N;Zp[1]<-d$Z;
+  Bp[1]<-d$B;Np[1]<-d$N;Zp[1]<-d$Z;
   # outcomes
   if(is.null(censoring)){
     Cp[1]<-0
@@ -60,8 +67,12 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
     # if no terminal events, then simulate
     if(Cp[j-1]==0&Sp[j-1]==0&Dp[j-1]==0&Yp[j-1]==0) {
       # exposure
-      dXp<-data.frame(Vp,R=Rp,Xl=Xp[j-1],Bl=Bp[j-1],Nl=Np[j-1],j)
-      Xp[j]<-pFunc(fitX,dXp)
+      if(is.null(exposure)){
+        dXp<-data.frame(Vp,R=Rp,Xl=Xp[j-1],Bl=Bp[j-1],Nl=Np[j-1],j)
+        Xp[j]<-pFunc(fitX,dXp)
+      } else{
+        Xp[j]<-exposure
+      }
       # time-varying confounder 1
       dBp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],Bl=Bp[j-1],Nl=Np[j-1],j)
       Bp[j]<-pFunc(fitB,dBp)

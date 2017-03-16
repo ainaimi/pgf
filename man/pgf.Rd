@@ -19,7 +19,8 @@ carlo resample size.}
 natural course, "1" indicates set randomization to treatment,
 "0" indicates set randomization to placebo. Defaults to "NULL".}
 
-\item{exposure}{A numeric exposure. "NULL" indicates natural course.}
+\item{exposure}{A numeric exposure. "NULL" indicates natural course,
+"1" indicates set to exposed, "0" indicates set to unexposed.}
 
 \item{censoring}{A numeric censoring. "NULL" indicates no
 censoring, and "natural" indicates censoring as in empirical
