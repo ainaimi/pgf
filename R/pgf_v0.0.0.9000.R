@@ -72,7 +72,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
       }
       # outcome 2
       dSp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Xp[j-1],N=Np[j],Nl=Np[j-1],j)
-      if(j<=9){
+      if(j<=11){
         Sp[j]<-ifelse(Zp[j]==0&Cp[j]==0&j>4,
                       pFunc(fitS,dSp),
                       0)
@@ -81,7 +81,7 @@ pgf<-function(ii,mc_data,length,randomization=NULL,exposure=NULL,censoring=NULL)
       }
       # outcome 3
       dDp<-data.frame(Vp,R=Rp,X=Xp[j],Xl=Xp[j-1],B=Bp[j],Bl=Bp[j-1],N=Np[j],Nl=Np[j-1],j)
-      Dp[j]<-ifelse(Cp[j]==0&Sp[j]==0&Zp[j]==1&j>1&j<11,
+      Dp[j]<-ifelse(Cp[j]==0&Sp[j]==0&Zp[j]==1&j>1&j<6,
                     pFunc(fitD,dDp),
                     0)
       # outcome 4
