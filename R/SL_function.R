@@ -23,15 +23,12 @@ SL.model <- function(multicore=0,dependent,independent,id,library,cores=4) {
                                              SL.library=SL.library,
                                              method="method.NNLS",family=binomial())
   } else if(multicore==2){
-    cl <- startMPIcluster(cores)
-    registerDoMPI(cl)
-    # cl<-makeCluster(cores, type="PSOCK")
-    # clusterSetRNGStream(cl, iseed=123)
+    cl<-makeCluster(cores, type="FORK")
+    clusterSetRNGStream(cl, iseed=123)
     output <- SuperLearner::snowSuperLearner(cluster=cl,Y=dependent, X=independent,id=id,
                                              SL.library=SL.library,
                                              method="method.NNLS",family=binomial())
-    #stopCluster(cl)
-    closeCluster(cl)
+    stopCluster(cl)
   }
   return(output)
 }
