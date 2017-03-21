@@ -1,0 +1,28 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+pgf
+===
+
+pgf is an R implementation of the parametric g formula, first developed by Robins in the mid 1980s. The purpose of this program is to simulate the follow-up of a cohort study with complex longitudinal data under different exposure regimes. pgf accomplishes this in two steps:
+
+-   Fit empirical models to the observed complex longitudinal dataset.
+
+-   Simulate follow-up from each model, but setting the exposure/censoring values to desired levels.
+
+You can install the latest development version from github with
+
+    ```R
+    install.packages("devtools")
+    devtools::install_github("ainaimi/pgf")
+    ```
+
+If you encounter a bug or other issue, please file a request on [github](https://github.com/ainaimi/pgf/issues).
+
+Learning pgf
+------------
+
+A vignette for the pgf package is currently in preparation. To learn about the parametric g formula more generally, please refer to the following citations:
+
+-   [Naimi et al (2016)](https://academic.oup.com/ije/article-abstract/doi/10.1093/ije/dyw323/2760169/An-Introduction-to-G-Methods?redirectedFrom=fulltext)
+-   [Daniel et al (2013)](http://onlinelibrary.wiley.com/doi/10.1002/sim.5686/abstract)
+-   [Robins and Hernan (2009)](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/343/2013/03/abc.pdf)
