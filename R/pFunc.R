@@ -8,4 +8,4 @@
 #' @export
 #' @examples
 #' pFunc()
-pFunc<-function(mod,ndat){as.numeric(predict(mod,newdata=ndat,onlySL=T,type="response")$pred>runif(1))}
+pFunc<-function(mod,ndat){as.numeric(predict(mod,newdata=ndat,onlySL=T,type="response")>runif(1))}
