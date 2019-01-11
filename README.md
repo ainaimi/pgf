@@ -26,3 +26,6 @@ A vignette for the pgf package is currently in preparation. To learn about the p
 -   [Naimi et al (2016)](https://academic.oup.com/ije/article-abstract/doi/10.1093/ije/dyw323/2760169/An-Introduction-to-G-Methods?redirectedFrom=fulltext)
 -   [Daniel et al (2013)](http://onlinelibrary.wiley.com/doi/10.1002/sim.5686/abstract)
 -   [Robins and Hernan (2009)](https://cdn1.sph.harvard.edu/wp-content/uploads/sites/343/2013/03/abc.pdf)
+
+
+This work is supported by NIH Grant R01 HD093602.
